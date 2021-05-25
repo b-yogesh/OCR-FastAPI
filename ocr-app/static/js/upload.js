@@ -1,6 +1,6 @@
 function perform_OCR(){
     var file = document.getElementById("image_file").files
-    var endpoint = "/perform_OCR"
+    var endpoint = "/perform_DAI"
     var formData = new FormData()
     formData.append('image', file[0])
 
@@ -17,9 +17,11 @@ function perform_OCR(){
             if (x.style.display === "none") {
                 x.style.display = "block"
                 $(".image_1").attr('src', "static/temp/overlayed_image.png")
+                $(".image_2").attr('src', "static/temp/layoutlm.png")
             } else {
                 x.style.display = "none"
                 $(".image_1").attr('src', "#")
+                $(".image_2").attr('src', "#")
             }
         }
     })
