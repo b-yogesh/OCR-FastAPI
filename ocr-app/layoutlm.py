@@ -10,6 +10,7 @@ from transformers import LayoutLMForTokenClassification, LayoutLMConfig, LayoutL
 import torch
 import os
 from . import config as app_config
+import dvc.api
 
 def normalize_box(box, width, height):
     return [
@@ -118,7 +119,18 @@ def get_layoutlm_predictions(img_path):
 
     args = AttrDict(args)
 
-    MODEL_PATH = "D:/K-Lens/natif/layoutLM/unilm/layoutlm/examples/seq_labeling/output/checkpoint-5000/pytorch_model.bin"
+    # MODEL_PATH = "D:/K-Lens/natif/layoutLM/unilm/layoutlm/examples/seq_labeling/output/checkpoint-5000/pytorch_model.bin"
+
+    ### DVC
+    path = 'model/pytorch_model.bin'
+    repo = 'J:/PersonalProjects/ocr'
+    version ='v1'
+
+    MODEL_PATH = dvc.api.get_url(
+                                path=path,
+                                repo=repo,
+                                rev=version
+                              )
 
     tokenizer = LayoutLMTokenizer.from_pretrained("microsoft/layoutlm-base-uncased")
     state_dict = torch.load(MODEL_PATH, map_location=torch.device('cpu'))
