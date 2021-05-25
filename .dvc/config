@@ -1,4 +1,4 @@
 [core]
     remote = dvc-remote
 ['remote "dvc-remote"']
-    url = C:/Users/yoges/AppData/Local/Temp/layoutlm-dvc-storage
+    url = C:/Users/yoges/AppData/Local/Temp/layoutlm_new-dvc-storage
