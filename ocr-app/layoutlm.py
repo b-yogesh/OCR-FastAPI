@@ -124,8 +124,8 @@ def get_layoutlm_predictions(img_path):
     ### DVC
     path = 'model/pytorch_model.bin'
     repo = 'J:/PersonalProjects/ocr'
-    version ='v1'
-    
+    version ='v2'
+
     MODEL_PATH = dvc.api.get_url(
                                 path=path,
                                 repo=repo,
