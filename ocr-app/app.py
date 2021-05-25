@@ -3,6 +3,10 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from . import utils
 from . import ocr
+import os
+
+TEMP_PATH =  'ocr-app/static/temp'
+FOLDER = 'J:/PersonalProjects/ocr/'
 
 # Initialize fastapi instance
 app = FastAPI()
@@ -15,6 +19,7 @@ app.mount("/static", StaticFiles(directory="ocr-app/static"))
 @app.get('/', tags=['root'])
 async def index(request: Request):
     context = {"request": request}
+    utils.remove_temp_files(FOLDER, TEMP_PATH)
     return templates.TemplateResponse("index.html", context)
 
 @app.post("/perform_OCR")

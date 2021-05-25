@@ -12,7 +12,16 @@ function perform_OCR(){
         processData: false,
         contentType: false,
         success: function(data){
-            console.log(data.text)
+            console.log(data.is_success)
+            var x = document.getElementById("overlayed_image")
+            if (x.style.display === "none") {
+                x.style.display = "block"
+                $(".image_1").attr('src', "static/temp/overlayed_image.png")
+            } else {
+                x.style.display = "none"
+                $(".image_1").attr('src', "#")
+            }
         }
     })
 }
+

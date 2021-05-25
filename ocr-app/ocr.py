@@ -8,7 +8,8 @@ def extract(img_path):
     try:
         data =  pytesseract.image_to_data(img_path, output_type=Output.DICT)
         image = get_bboxes(data, img_path)
-        cv2.imwrite('overlyed_image.png', image)
+        save_path = 'ocr-app/static/temp'
+        cv2.imwrite(os.path.join(save_path, 'overlayed_image.png'), image)
         return True
     except:
         return False
