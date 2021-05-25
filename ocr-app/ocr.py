@@ -1,8 +1,22 @@
 import pytesseract
+from pytesseract import Output
 import os
+import cv2
+pytesseract.pytesseract.tesseract_cmd = f'C:/Program Files/Tesseract-OCR/tesseract'
 
-def extract(img_path, lang='eng'):
+def extract(img_path):
     try:
-        return pytesseract.image_to_string(img_path, lang=lang)
+        data =  pytesseract.image_to_data(img_path, output_type=Output.DICT)
+        image = get_bboxes(data, img_path)
+        cv2.imwrite('overlyed_image.png', image)
+        return True
     except:
-        return f"Unable to process file: {img_path}"
+        return False
+
+def get_bboxes(data, img_path):
+    img = cv2.imread(img_path)
+    n_boxes = len(data['level'])
+    for i in range(n_boxes):
+        (x, y, w, h) = (data['left'][i], data['top'][i], data['width'][i], data['height'][i])
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    return img

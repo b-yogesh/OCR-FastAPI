@@ -9,6 +9,8 @@ function perform_OCR(){
         url: endpoint,
         data: formData,
         cache: false,
+        processData: false,
+        contentType: false,
         success: function(data){
             console.log(data.text)
         }

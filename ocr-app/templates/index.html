@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<script src='js/upload.js'/>
+
+<script src='static/js/upload.js' type="text/javascript"></script>
 
 
-<h2>Inside block content</h2>
-<button class="ui primary button" onclick="perforn_OCR()">
+<input class="btn btn-secondary" type="file" id="image_file" name="my_file"></input>
+
+
+<button class="ui primary button" onclick="perform_OCR()">
     Upload Image
 </button>
 
