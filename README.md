@@ -4,4 +4,4 @@ This is a simple FastAPI application where a user can upload a document and view
 
 ## UI
 
-![j1](https://user-images.githubusercontent.com/22027039/119569239-c01cbc80-bdae-11eb-82e8-78a2763616e6.PNG)
+![j1](https://user-images.githubusercontent.com/22027039/119569803-8a2c0800-bdaf-11eb-8175-7115b4e11964.PNG)
