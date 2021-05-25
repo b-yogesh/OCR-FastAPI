@@ -9,6 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 from transformers import LayoutLMForTokenClassification, LayoutLMConfig, LayoutLMTokenizer
 import torch
 import os
+from . import config as app_config
 
 def normalize_box(box, width, height):
     return [
@@ -201,5 +202,5 @@ def get_layoutlm_predictions(img_path):
         draw.rectangle(box, outline=label2color[predicted_label])
         draw.text((box[0] + 10, box[1] - 10), text=predicted_label, fill=label2color[predicted_label], font=font)
     
-    save_path = 'ocr-app/static/temp'
+    save_path = app_config.settings.temp_dir
     image.save(os.path.join(save_path, 'layoutlm.png'))

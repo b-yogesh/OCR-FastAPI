@@ -3,12 +3,13 @@ from pytesseract import Output
 import os
 import cv2
 pytesseract.pytesseract.tesseract_cmd = f'C:/Program Files/Tesseract-OCR/tesseract'
+from . import config as app_config
 
 def extract(img_path):
     try:
         data =  pytesseract.image_to_data(img_path, output_type=Output.DICT)
         image = get_bboxes(data, img_path)
-        save_path = 'ocr-app/static/temp'
+        save_path = app_config.settings.temp_dir
         cv2.imwrite(os.path.join(save_path, 'overlayed_image.png'), image)
         return True
     except:
